@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 07:40:45 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/14 10:09:34 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/17 12:25:19 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void print_map(char **vars)
 {
     int i = 0;
     if(!vars || !vars[0])
-        ft_puterr("Error: Empty Map");
+        ft_puterr("Error: Empty Map !!");
     else
     {
         while(vars[i])

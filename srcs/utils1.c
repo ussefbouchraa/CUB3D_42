@@ -6,21 +6,21 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 08:08:44 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/14 14:13:39 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/17 06:36:34 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void    check_paths(t_info *info, char **str)
+void    check_paths(t_info *info, char **path)
 {
-    if(!str[0] || !str[1])
+    if(!path[0] || !path[1])
     {
         free_items(info);
         ft_puterr("Error: Wrong Texture !!");
     }
-    if( access(str[1], F_OK | R_OK) ||
-        ft_strncmp(ft_strrchr(str[1], '.'), ".png", ft_strlen(str[1])))
+    if( access(path[1], F_OK | R_OK) ||
+        ft_strncmp(ft_strrchr(path[1], '.'), ".png", ft_strlen(path[1])))
             {
                 free_items(info);
                 ft_puterr("Error: Wrong Texture !!");

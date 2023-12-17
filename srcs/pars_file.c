@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_file.c                                       :+:      :+:    :+:   */
+/*   pars_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/13 07:09:30 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/17 00:06:11 by ybouchra         ###   ########.fr       */
+/*   Created: 2023/12/17 10:13:33 by ybouchra          #+#    #+#             */
+/*   Updated: 2023/12/17 10:13:49 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,6 @@ void check_colors(t_info *info)
     {
         pars_colors(info, info->F_colors[1], info->F_tab);
         pars_colors(info, info->C_colors[1], info->C_tab);
-        printf("----%d\n",info->C_tab[0]);
-        printf("----%d\n",info->C_tab[1]);
-        printf("----%d\n",info->C_tab[2]);
-        printf("++++%d\n",info->F_tab[0]);
-        printf("++++%d\n",info->F_tab[1]);
-        printf("++++%d\n",info->F_tab[2]);
     }
 }
 
@@ -73,6 +67,7 @@ void    split_items(t_info *info)
     }
 }
 
+
 void  valid_items(t_info *info)
 {
     int i;
@@ -98,11 +93,12 @@ void  valid_items(t_info *info)
     if (cp != 21)
         ft_puterr("Error: invalid items");
 }
- 
- void check_file(t_info *info)
+
+ void check_file(t_info *info, t_map *map)
  {
     valid_items(info);
     split_items(info);
     check_texture(info);
     check_colors(info);
+    check_map(map, info);
  }

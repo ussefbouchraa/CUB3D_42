@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 06:21:59 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/14 14:15:34 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/17 10:13:08 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void    read_file(char *av, t_info *info)
     info->fd = open(av, O_RDONLY);
     info->file = malloc(sizeof(char *) * (info->height + 1));
     if(!info->file)
-        ft_puterr("Error: Allocation Failed");
+        perror("Error:");
     while(info->height > i)
         info->file[i++] = get_next_line(info->fd);
     info->file[i] = NULL;
@@ -73,8 +73,7 @@ int main(int ac, char **av)
         ft_bzero(&player, sizeof(player));
         check_extention(av[1]);
         read_file(av[1], &info);
-        check_file(&info);
-        // check_map(&map);
+        check_file(&info, &map);
         
      }
      else
