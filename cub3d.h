@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 03:00:06 by ebelfkih          #+#    #+#             */
-/*   Updated: 2023/12/17 00:06:24 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/21 19:53:32 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_info
 	int		fd;
 	char 	**file;
 	int 	height;
+	int		start;
 	char	**NO_txt;
 	char	**WE_txt;
 	char	**SO_txt;
@@ -77,17 +78,23 @@ typedef struct s_map {
 	char			**map; // youssef
 }t_map;
 
-void	check_file(t_info *info);
+void	check_file(t_info *info, t_map *map);
+void	check_map(t_map *vars, t_info *info);
+char	*get_spaces(int size);
+int		max_width( char **f_map);
+int 	height_map(char **f_map);
+int		skip_items(char **f_map);
 void	valid_items(t_info *info);
 void    split_items(t_info *info);
 void 	ft_puterr(char *str);
 char	*get_next_line(int fd);
 int		is_exist(char *str, int c);
-int		nbr_item(char *s, char c);
+int		nbr_item(char *s, char c);  
 void	free_items(t_info *info);
 void	ft_clearr(char **arr);
 void    check_paths(t_info *info, char **str);
-void    pars_colors(t_info *info, char *data_color, int tab[3]);
+void    pars_rgb(t_info *info, char *data_color, int tab[3]);
+int 	valid_char(char **map);
 void	print_map(char **vars);
 
 void put_mini_map(t_map *map, mlx_image_t* img);

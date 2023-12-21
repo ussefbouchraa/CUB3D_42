@@ -6,11 +6,11 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 08:08:44 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/17 06:36:34 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/19 22:53:32 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../cub3d.h"
 
 void    check_paths(t_info *info, char **path)
 {
@@ -72,7 +72,7 @@ void init_colors(t_info *info, char **arr, int tab[3])
     }
 }
 
-void    pars_colors(t_info *info, char *data_color, int tab[3])
+void    pars_rgb(t_info *info, char *data_color, int tab[3])
 {
     char **arr;
 

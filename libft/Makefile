@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+         #
+#    By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/21 09:52:57 by ebelfkih          #+#    #+#              #
-#    Updated: 2022/11/20 20:51:44 by ebelfkih         ###   ########.fr        #
+#    Updated: 2023/12/19 22:47:00 by ybouchra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ MANDATORY_PART = ft_isalpha.c \
 			ft_itoa.c \
 			ft_strlcat.c \
 			ft_split.c \
+			get_next_line.c\
 
 BONUS_PART = ft_lstnew.c \
 			ft_lstadd_front.c \

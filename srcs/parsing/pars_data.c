@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars_file.c                                        :+:      :+:    :+:   */
+/*   pars_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/17 10:13:33 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/17 10:13:49 by ybouchra         ###   ########.fr       */
+/*   Created: 2023/12/19 22:44:45 by ybouchra          #+#    #+#             */
+/*   Updated: 2023/12/21 12:18:16 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../cub3d.h"
 
 void check_colors(t_info *info)
 {
@@ -23,8 +23,8 @@ void check_colors(t_info *info)
     }
     else
     {
-        pars_colors(info, info->F_colors[1], info->F_tab);
-        pars_colors(info, info->C_colors[1], info->C_tab);
+        pars_rgb(info, info->F_colors[1], info->F_tab);
+        pars_rgb(info, info->C_colors[1], info->C_tab);
     }
 }
 
@@ -88,10 +88,13 @@ void  valid_items(t_info *info)
         else if (!ft_strncmp(info->file[i], "F ", 2))
             cp+=5;
         else if (!ft_strncmp(info->file[i], "C ", 2))
-            cp+=6;
+            cp-=16;
     }
-    if (cp != 21)
-        ft_puterr("Error: invalid items");
+    if (cp != -1)
+    {
+        ft_clearr(info->file);
+        ft_puterr("Error: invalid items !!");
+    }
 }
 
  void check_file(t_info *info, t_map *map)
