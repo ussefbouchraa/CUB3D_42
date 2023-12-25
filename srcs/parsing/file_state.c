@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 22:41:23 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/19 22:53:08 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/25 01:02:32 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void    read_file(char *av, t_info *info)
     i = 0;
     height_file(av, info);
     if(!info->height)
-    ft_puterr("Error: Empty File");
+        ft_puterr("Error: Empty File");
     info->fd = open(av, O_RDONLY);
     info->file = malloc(sizeof(char *) * (info->height + 1));
     if(!info->file)
@@ -51,12 +51,11 @@ void    read_file(char *av, t_info *info)
 
 void check_extention(char *av)
 {
-    // if(!av || !is_exist(av, '.'))
-    //     ft_puterr("Error: Invalid Argument !!");
-    if(access(av, F_OK  | R_OK ))
-         ft_puterr("Error: Invalid Argument !!");
+    if(!av || !is_exist(av, '.'))
+        ft_puterr("Error: Invalid Argument !!");
     if(ft_strncmp(ft_strrchr(av, '.'), ".cub", ft_strlen(av)))
         ft_puterr("ERROR : Wrong Extention !!");
+
 }
 
 

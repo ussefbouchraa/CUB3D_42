@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 22:44:45 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/21 12:18:16 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/25 04:44:28 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void check_colors(t_info *info)
         info->F_colors[2] || info->C_colors[2])
     {
         free_items(info);
-        ft_puterr("Error: Wrong Data !!");
+        ft_puterr("Error: Invalid Data !!");
     }
     else
     {
@@ -34,7 +34,7 @@ void check_texture(t_info *info)
         info->NO_txt[2] || info->WE_txt[2] || info->SO_txt[2] || info->EA_txt[2])   
     {
         free_items(info);
-        ft_puterr("Error: Wrong Data !!");
+        ft_puterr("Error: Invalid Data !!");
     }
     else
     {
@@ -67,7 +67,25 @@ void    split_items(t_info *info)
     }
 }
 
+int is_dup(char *itm, char **file)
+{
+    int i;
+    int count;
 
+    count = 0;
+    i = 0;
+
+    while(file[i])
+    {
+        if(!ft_strncmp(file[i], itm, 2))
+            count++;
+        i++;
+    }
+    if(count == 1)
+        return(0);
+    else
+        return(1);
+}
 void  valid_items(t_info *info)
 {
     int i;
@@ -77,23 +95,23 @@ void  valid_items(t_info *info)
     i = -1;
     while (info->file[++i])
     {
-        if (!ft_strncmp(info->file[i], "NO ", 3))
+        if (!ft_strncmp(info->file[i], "NO ", 3) && !is_dup("NO", info->file))
             cp++;
-        else if (!ft_strncmp(info->file[i], "WE ", 3))
-            cp+=2;
-        else if (!ft_strncmp(info->file[i], "SO ", 3))
-            cp+=3;
-        else if (!ft_strncmp(info->file[i], "EA ", 3))
-            cp+=4;
-        else if (!ft_strncmp(info->file[i], "F ", 2))
-            cp+=5;
-        else if (!ft_strncmp(info->file[i], "C ", 2))
-            cp-=16;
+        else if (!ft_strncmp(info->file[i], "WE ", 3) && !is_dup("WE", info->file))
+            cp++;
+        else if (!ft_strncmp(info->file[i], "SO ", 3) && !is_dup("SO", info->file))
+           cp++;
+        else if (!ft_strncmp(info->file[i], "EA ", 3) && !is_dup("EA", info->file))
+            cp++;
+        else if (!ft_strncmp(info->file[i], "F ", 2) && !is_dup("F ", info->file))
+            cp++;
+        else if (!ft_strncmp(info->file[i], "C ", 2) && !is_dup("C ", info->file))
+            cp++;
     }
-    if (cp != -1)
+    if (cp != 6)
     {
         ft_clearr(info->file);
-        ft_puterr("Error: invalid items !!");
+        ft_puterr("Error: Invalid Data !!");
     }
 }
 

@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 08:08:44 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/19 22:53:32 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/25 04:22:01 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 void    check_paths(t_info *info, char **path)
 {
-    if(!path[0] || !path[1])
+    if (!path[0] || !path[1])
     {
         free_items(info);
         ft_puterr("Error: Wrong Texture !!");
     }
-    if( access(path[1], F_OK | R_OK) ||
-        ft_strncmp(ft_strrchr(path[1], '.'), ".png", ft_strlen(path[1])))
+    if( ft_strncmp(ft_strrchr(path[1], '.'), ".png", ft_strlen(path[1])))
             {
                 free_items(info);
                 ft_puterr("Error: Wrong Texture !!");
             }
-
 }
+
 int digit_arg(char *arr)
 {
     int i;
@@ -105,4 +104,11 @@ void free_items(t_info *info)
     info->EA_txt = NULL;
     info->C_colors = NULL;
     info->F_colors = NULL;
+}
+
+void map_err(t_info *info, char **map, char *msg)
+{
+    ft_puterr(msg);
+    ft_clearr(map);
+    free_items(info);
 }
