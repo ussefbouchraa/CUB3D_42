@@ -6,11 +6,23 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 07:40:45 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/21 11:50:14 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/26 08:01:14 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+
+void print_map(char **map)
+{
+    int i = 0;
+    if(!map || !map[0])
+        ft_puterr("Error: Empty Map !!");
+    else
+    {
+        while(map[i])
+        printf("%s\n", map[i++]);
+    }
+}
 
 void ft_puterr(char *str)
 {
@@ -36,17 +48,6 @@ int is_exist(char *str, int c)
     return(0);
 }
 
-void print_map(char **map)
-{
-    int i = 0;
-    if(!map || !map[0])
-        ft_puterr("Error: Empty Map !!");
-    else
-    {
-        while(map[i])
-        printf("%s\n", map[i++]);
-    }
-}
 
 int nbr_item(char *s, char c)
 {
@@ -65,15 +66,20 @@ int nbr_item(char *s, char c)
     return(cp);
 }
 
-void ft_clearr(char **arr)
+int is_digit(char *arr)
 {
     int i;
 
-    i = -1;
-    if(arr || !arr[0])
-        return;
-    while(arr[++i])
-        free(arr[i]);
-    free(arr);
-    arr = NULL;
+    i = 0;
+    if(!arr || !arr[0])
+        return(0);
+    if(arr[0] == '+')
+        i++;
+    while(arr[i])
+    {
+        if(!(arr[i] >= '0' && arr[i] <= '9'))
+            return(0);
+    i++;
+    }
+    return(1); 
 }

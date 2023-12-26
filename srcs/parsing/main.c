@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_state.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 22:41:23 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/25 01:02:32 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/26 08:54:30 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void    read_file(char *av, t_info *info)
     info->fd = open(av, O_RDONLY);
     info->file = malloc(sizeof(char *) * (info->height + 1));
     if(!info->file)
-        perror("Error:");
+        ft_puterr("Error: allocation failed !!");  
     while(info->height > i)
         info->file[i++] = get_next_line(info->fd);
     info->file[i] = NULL;
@@ -51,13 +51,19 @@ void    read_file(char *av, t_info *info)
 
 void check_extention(char *av)
 {
-    if(!av || !is_exist(av, '.'))
+    if (!av || !is_exist(av, '.'))
         ft_puterr("Error: Invalid Argument !!");
-    if(ft_strncmp(ft_strrchr(av, '.'), ".cub", ft_strlen(av)))
+    if (ft_strncmp(ft_strrchr(av, '.'), ".cub", ft_strlen(av)))
         ft_puterr("ERROR : Wrong Extention !!");
-
 }
 
+void    init_info(t_map *vars, t_player *player)
+{
+    vars->width = max_width(vars->map);
+    player->y = get_y(vars->map);
+    player->x = get_x(vars->map, player->y);
+
+}
 
 int main(int ac, char **av)
 {
@@ -73,8 +79,12 @@ int main(int ac, char **av)
         check_extention(av[1]);
         read_file(av[1], &info);
         check_file(&info, &map);
-        
+        check_map(&map, &info);
+        init_info(&map, &player);
+        free_clr(&info);
+        ft_clearr(map.map);
      }
      else
         write(2, "Error: incorrect syntax", 24);
+    // while(1);
 }
