@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 10:02:39 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/26 08:53:46 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/27 03:39:28 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,45 @@ int  valid_char(char **map)
     }
     return(1);
 }
-int start_map(char **f_map)
+void  start_map(t_info *info, char **f_map)
 {
     int i;
-    int start;
-    int len;
 
     i = 0;
-    start = 0;
 
     while (f_map[i])
     {
         if(!ft_strncmp(f_map[i], "NO ", 3) || !ft_strncmp(f_map[i], "SO ", 3) ||
-            !ft_strncmp(f_map[i], "WE ", 3) || !ft_strncmp(f_map[i], "EA ", 3))
-                start++;
-        else if(!f_map[i][0] || !ft_strncmp(f_map[i], "F ", 2) || !ft_strncmp(f_map[i], "C ", 2))
-            start++;
+            !ft_strncmp(f_map[i], "WE ", 3) || !ft_strncmp(f_map[i], "EA ", 3) ||
+            !ft_strncmp(f_map[i], "F ", 2) || !ft_strncmp(f_map[i], "C ", 2))
+            {
+                info->start++;
+                info->items++;
+            }
+        else if(!f_map[i][0] || f_map[i][0] == '\t' || f_map[i][0] == '\n' ||
+            f_map[i][0] == '\v' || f_map[i][0] == '\r' )
+            info->start++;
         else
-            return(start);
+            return;
         i++;
     }
-    return (start);
+}
+
+int  height_map(t_info *info, char **f_map)
+{
+    int i;
+    int len;
+    int start;
+
+    len = 0;
+    start_map(info, info->file);
+    start = info->start;
+    while (f_map[start] && f_map[start][0])
+    {
+        len++;
+        start++;
+    }
+    return(len);
 }
 
 int max_width( char **f_map)
@@ -74,23 +92,6 @@ int max_width( char **f_map)
     return (max);
 }
 
-int  height_map(char **f_map)
-{
-    int i;
-    int len;
-    int start;
-
-    len = 0;
-    start = start_map(f_map);
-    if(start < 7)
-        return(len);
-    while (f_map[start])
-    {
-        len++;
-        start++;
-    }
-    return(len);
-}
 
 int get_y(char **map)
 {

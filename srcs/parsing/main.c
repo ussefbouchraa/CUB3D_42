@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 22:41:23 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/26 08:54:30 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/27 02:59:17 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,23 @@ void check_extention(char *av)
         ft_puterr("ERROR : Wrong Extention !!");
 }
 
-void    init_info(t_map *vars, t_player *player)
+
+
+void    init_info(t_info *info, t_map *vars, t_player *player, t_mlx *mlx)
 {
-    vars->width = max_width(vars->map);
     player->y = get_y(vars->map);
     player->x = get_x(vars->map, player->y);
+    printf("%s %s\n", info->NO_txt[0], info->NO_txt[1]);
+    printf("%s %s\n", info->WE_txt[0], info->WE_txt[1]);
+    printf("%s %s\n", info->SO_txt[0], info->SO_txt[1]);
+    printf("%s %s\n", info->EA_txt[0], info->EA_txt[1]);
+    
+    printf("%s %s %s\n", info->C_colors[0], info->C_colors[1], info->C_colors[2]);
+    printf("%s %s %s\n", info->F_colors[0], info->F_colors[1], info->F_colors[2]);
 
+    print_map(vars->map);
+
+    // init_texture(mlx, info, vars);
 }
 
 int main(int ac, char **av)
@@ -70,6 +81,7 @@ int main(int ac, char **av)
     t_map map;
     t_player player;
     t_info info;
+    t_mlx mlx;
 
     if(ac == 2)
      {  
@@ -80,7 +92,7 @@ int main(int ac, char **av)
         read_file(av[1], &info);
         check_file(&info, &map);
         check_map(&map, &info);
-        init_info(&map, &player);
+        init_info(&info, &map, &player, &mlx);
         free_clr(&info);
         ft_clearr(map.map);
      }
