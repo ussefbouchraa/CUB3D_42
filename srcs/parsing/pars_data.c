@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 06:09:06 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/26 22:38:03 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/27 22:46:40 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ void    check_paths(t_info *info, char **path)
         free_txt(info);
         ft_puterr("Error: Invalid Data Texture !!");
     }
-    if( ft_strncmp(ft_strrchr(path[1], '.'), ".png", ft_strlen(path[1])) &&
-         !is_exist(path[1], '/'))
+    if( ft_strncmp(ft_strrchr(path[1], '.'), ".png", ft_strlen(path[1])))
             {
                 free_txt(info);
                 ft_puterr("Error: Invalid Data Texture !!");
@@ -78,7 +77,6 @@ void    check_paths(t_info *info, char **path)
 
 void    check_colors(t_info *info, t_map *map)
 {
-    
     if(!info->C_colors[0] || !info->F_colors[0] ||
         info->F_colors[2] || info->C_colors[2])
     {

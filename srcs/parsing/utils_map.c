@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 10:02:39 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/27 03:39:28 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/28 00:26:46 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,24 @@ int  valid_char(char **map)
     }
     return(1);
 }
+int just_spaces(char *map_line)
+{
+    int i;
+    i = 0;
+    if (map_line[i] == ' ')
+    {
+        while (map_line[i] == ' ')
+            i++;
+        if (map_line[i] == '\0' || map_line[i] == '\n')
+            return (1);
+    }
+    return (0);
+}
 void  start_map(t_info *info, char **f_map)
 {
     int i;
 
     i = 0;
-
     while (f_map[i])
     {
         if(!ft_strncmp(f_map[i], "NO ", 3) || !ft_strncmp(f_map[i], "SO ", 3) ||
@@ -49,7 +61,7 @@ void  start_map(t_info *info, char **f_map)
                 info->items++;
             }
         else if(!f_map[i][0] || f_map[i][0] == '\t' || f_map[i][0] == '\n' ||
-            f_map[i][0] == '\v' || f_map[i][0] == '\r' )
+            f_map[i][0] == '\v' || f_map[i][0] == '\r' || just_spaces(f_map[i]))
             info->start++;
         else
             return;

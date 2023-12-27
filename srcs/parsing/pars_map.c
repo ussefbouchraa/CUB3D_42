@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 10:15:00 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/27 03:21:11 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/28 00:52:03 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void fill_map(t_info *info , t_map *vars)
 
     start = info->start;
     j  = 0;
-    while (info->file[start] && info->file[start][0])
+    while (info->file[start] && info->file[start][0] )
     {
         vars->map[j++] = ft_strdup(info->file[start]);
         start++;
@@ -136,7 +136,6 @@ void read_map(t_info *info, t_map *vars)
         free_clr(info);
         ft_puterr("Error: Empty Map !!");
     }
-
     vars->map = malloc(sizeof(char*) * (vars->height + 1));
     if(!vars->map)
         {
@@ -176,7 +175,7 @@ void check_map(t_map *vars, t_info *info)
     read_map(info, vars);
     check_items(info, vars->map);
     set_map(vars, vars->map);
-    map_border(info, vars->map, vars->height -1);
+    // map_border(info, vars->map, vars->height -1);
     map_content(info, vars->map);
 }
 

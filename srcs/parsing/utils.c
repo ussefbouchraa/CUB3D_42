@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 07:40:45 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/26 08:01:14 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/27 23:57:13 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void print_map(char **map)
     else
     {
         while(map[i])
-        printf("%s\n", map[i++]);
+            printf("%s\n", map[i++]);
     }
 }
 

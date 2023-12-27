@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 22:41:23 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/27 02:59:17 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/27 23:56:13 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,19 @@ void    init_info(t_info *info, t_map *vars, t_player *player, t_mlx *mlx)
     printf("%s %s\n", info->SO_txt[0], info->SO_txt[1]);
     printf("%s %s\n", info->EA_txt[0], info->EA_txt[1]);
     
-    printf("%s %s %s\n", info->C_colors[0], info->C_colors[1], info->C_colors[2]);
-    printf("%s %s %s\n", info->F_colors[0], info->F_colors[1], info->F_colors[2]);
+    printf("%s %d %d %d\n", info->F_colors[0], vars->floor_color[0], vars->floor_color[1], vars->floor_color[2]);
+    printf("%s %d %d %d\n", info->C_colors[0], vars->ceiling_color[0], vars->ceiling_color[1], vars->ceiling_color[2]);
 
     print_map(vars->map);
+
+    printf("height %d\n", vars->height);
+    printf("start %d\n", info->start);
+    printf("width%d\n", vars->max_width);
+    printf("block_size %d\n", vars->block_size);
+
+    printf("position x %d\n", player->x);
+    printf("position y %d\n", player->y);
+    printf("score %d\n", player->score);
 
     // init_texture(mlx, info, vars);
 }
@@ -97,6 +106,6 @@ int main(int ac, char **av)
         ft_clearr(map.map);
      }
      else
-        write(2, "Error: incorrect syntax", 24);
+        write(2, "Error: incorrect syntax !!", 24);
     // while(1);
 }
