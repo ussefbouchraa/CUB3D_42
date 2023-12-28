@@ -6,80 +6,101 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 07:40:45 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/27 23:57:13 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/28 10:15:17 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void print_map(char **map)
+int	increment(char *line, char c)
 {
-    int i = 0;
-    if(!map || !map[0])
-        ft_puterr("Error: Empty Map !!");
-    else
-    {
-        while(map[i])
-            printf("%s\n", map[i++]);
-    }
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (line[i])
+	{
+		if (line[i] == c)
+			count++;
+		i++;
+	}
+	if (count == 1)
+		return (1);
+	else
+		return (2);
 }
 
-void ft_puterr(char *str)
+void	ft_puterr(char *str)
 {
-    while(*str)
-        write(2, str++, 1);
-    write(2,"\n",2);
-    exit(1);
+	while (*str)
+		write(2, str++, 1);
+	write(2, "\n", 2);
+	exit(1);
 }
 
-int is_exist(char *str, int c)
+int	is_exist(char *str, int c)
 {
-    int i;
-    
-    i = 0;
-    if(!str || !str[0])
-        return(0);
-    while(str[i])
-    {
-        if(str[i] == c)
-            return(1);
-        i++;
-    }
-    return(0);
+	int	i;
+
+	i = 0;
+	if (!str || !str[0])
+		return (0);
+	while (str[i])
+	{
+		if (str[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
-
-int nbr_item(char *s, char c)
+int	nbr_item(char *s, char c)
 {
-    int i;
-    int cp;
-    
-    cp = 0;
-    i = -1;
-    if(!s)
-        return 0;
-    while(s[++i])
-    {
-        if(s[i] == c)
-            cp++;
-    }
-    return(cp);
+	int	i;
+	int	cp;
+
+	cp = 0;
+	i = -1;
+	if (!s)
+		return (0);
+	while (s[++i])
+	{
+		if (s[i] == c)
+			cp++;
+	}
+	return (cp);
 }
 
-int is_digit(char *arr)
+int	is_digit(char *arr)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if(!arr || !arr[0])
-        return(0);
-    if(arr[0] == '+')
-        i++;
-    while(arr[i])
-    {
-        if(!(arr[i] >= '0' && arr[i] <= '9'))
-            return(0);
-    i++;
-    }
-    return(1); 
+	i = 0;
+	if (!arr || !arr[0])
+		return (0);
+	if (arr[0] == '+')
+		i++;
+	while (arr[i])
+	{
+		if (!(arr[i] >= '0' && arr[i] <= '9'))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	print_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	if (!map || !map[0])
+		ft_puterr("Error: Empty Map !!");
+	else
+	{
+		while (map[i])
+			printf("%s\n", map[i]);
+		i++;
+	}
 }

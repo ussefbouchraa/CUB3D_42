@@ -6,11 +6,12 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 08:05:25 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/12 06:42:58 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/28 09:13:40 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
 
 char	*readall(char *saved, int fd)
 {
