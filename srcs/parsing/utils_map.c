@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 10:02:39 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/28 10:23:39 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/29 20:31:01 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	start_map(t_info *info, char **f_map)
 	while (f_map[i])
 	{
 		if (!ft_strncmp(f_map[i], "NO ", 3) || !ft_strncmp(f_map[i], "SO ", 3)
-			|| !ft_strncmp(f_map[i], "WE ", 3) || !ft_strncmp(f_map[i], "EA ", 3))
+			|| !ft_strncmp(f_map[i], "WE ", 3)
+			|| !ft_strncmp(f_map[i], "EA ", 3))
 		{
 			info->start++;
 			info->items++;
@@ -32,7 +33,7 @@ void	start_map(t_info *info, char **f_map)
 			info->items++;
 		}
 		else if (!f_map[i][0] || f_map[i][0] == '\t' || f_map[i][0] == '\n'
-				|| f_map[i][0] == '\v' || f_map[i][0] == '\r' || just_spaces(f_map[i]))
+				|| f_map[i][0] == '\r' || just_spaces(f_map[i]))
 			info->start++;
 		else
 			return ;

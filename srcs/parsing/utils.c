@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 07:40:45 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/28 10:15:17 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/29 20:26:43 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,19 +88,4 @@ int	is_digit(char *arr)
 		i++;
 	}
 	return (1);
-}
-
-void	print_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	if (!map || !map[0])
-		ft_puterr("Error: Empty Map !!");
-	else
-	{
-		while (map[i])
-			printf("%s\n", map[i]);
-		i++;
-	}
 }

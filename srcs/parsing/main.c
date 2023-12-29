@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 22:41:23 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/28 09:44:51 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/29 20:27:54 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,6 @@ void	init_info(t_info *info, t_map *vars, t_player *player)
 	if (vars->map[player->y][player->x] == 'E')
 		player->rad_current_view = 0;
 	vars->map[player->y][player->x] = '0';
-	print_map(vars->map);
-	printf("height = %d\n", vars->height);
-	printf("%d\n", info->start);
 }
 
 int	main(int ac, char **av)
