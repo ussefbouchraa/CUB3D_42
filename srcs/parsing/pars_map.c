@@ -6,11 +6,31 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 10:15:00 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/12/29 20:26:54 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/12/31 07:57:44 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+
+void map_border(t_info *info, char **map, int height)
+{
+    int i;
+    int j;
+	
+	j = -1;
+	i = -1;
+    while (map[0][++j])
+    {
+        if (map[0][j] != '1' && map[0][j] != ' ')
+            free_all(info, map, "Error: Map Not Sourounded !!");
+    }
+    j = -1;
+    while (map[height][++j])
+    {
+        if (map[height][j] != '1' && map[height][j] != ' ')
+            free_all(info, map, "Error: Map Not Sourounded !!");
+    }
+}
 
 void	map_content(t_info *info, char **map)
 {
@@ -116,5 +136,6 @@ void	check_map(t_map *vars, t_info *info)
 	read_map(info, vars);
 	fill_map(info, vars->map);
 	check_items(info, vars->map);
+	map_border(info, vars->map, vars->height - 1);
 	map_content(info, vars->map);
 }
